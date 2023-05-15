@@ -7,32 +7,35 @@ public class Task1 {
         Scanner scanner = new Scanner(System.in);
         while (true) {
             String city = scanner.nextLine();
+            String country;
             if (city.equals("Stop")) {
                 break;
-            }
-            switch (city) {
-                case "Москва":
-                case "Владивосток":
-                case "Ростов":
-                    System.out.println("Россия");
-                    break;
-                case "Рим":
-                case "Милан":
-                case "Турин":
-                    System.out.println("Италия");
-                    break;
-                case "Ливерпуль":
-                case "Манчестер":
-                case "Лондон":
-                    System.out.println("Англия");
-                    break;
-                case "Берлин":
-                case "Мюнхен":
-                case "Кёльн":
-                    System.out.println("Германия");
-                    break;
-                default:
-                    System.out.println("Неизвестная страна");
+            } else {
+                switch (city) {
+                    case "Москва":
+                    case "Владивосток":
+                    case "Ростов":
+                        country = "Россия";
+                        break;
+                    case "Рим":
+                    case "Милан":
+                    case "Турин":
+                        country = "Италия";
+                        break;
+                    case "Ливерпуль":
+                    case "Манчестер":
+                    case "Лондон":
+                        country = "Англия";
+                        break;
+                    case "Берлин":
+                    case "Мюнхен":
+                    case "Кёльн":
+                        country = "Германия";
+                        break;
+                    default:
+                        country = "Неизвестная страна";
+                }
+                System.out.println(country);
             }
         }
     }
