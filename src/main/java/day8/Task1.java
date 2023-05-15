@@ -5,7 +5,7 @@ public class Task1 {
         long startTime = System.currentTimeMillis();
         String string = "";
         for(int i = 0; i<=20000; i++){
-            string = string + i + " ";
+            string += + i + " ";
         }
         long stopTime = System.currentTimeMillis();
         System.out.println("Длительность работы, в мс.:" + (stopTime - startTime));
