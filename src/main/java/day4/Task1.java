@@ -24,7 +24,9 @@ public class Task1 {
             if(x > 8) countBiggerEight++;
             if(x == 1) countEqualOne++;
             if(x % 2 == 0) countEvenNumber++;
-            if(x % 2 != 0) countOddNumber++;
+            else {
+                countOddNumber++;
+            }
         }
 
         System.out.println("Длина массива: " + massive.length);
