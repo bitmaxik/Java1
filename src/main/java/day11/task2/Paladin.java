@@ -1,41 +1,18 @@
 package day11.task2;
 
-public class Paladin extends Hero implements Healer, MagicAttack {
-    private double health;
-    private double physDef;
-    private double magicDef;
-    private double physAtt;
-    private double magicAtt;
+public class Paladin extends Hero implements Healer {
 
     public Paladin(){
-        this.health = MAXHEALTH;
-        this.physDef = 0.5;
-        this.magicDef = 0.8;
-        this.physAtt = 15;
-        this.magicAtt = 0;
-    }
-    @Override
-    public  double getHealth() {
-        return health;
-    }
-    @Override
-    public void setHealth(double health) {
-        this.health = health;
-    }
-    @Override
-    public double getPhysDef() {
-        return physDef;
-    }
-    @Override
-    public double getMagicDef() {
-        return magicDef;
+        this.setPhysDef(0.5);
+        this.setMagicDef(0.8);
+        this.setPhysAtt(15);
     }
 
     @Override
     public void healHimself() {
-        if((this.health + 50) >= 100) this.health = MAXHEALTH;
+        if((this.getHealth() + 25) >= 100) this.setHealth(MAXHEALTH);
         else{
-            this.health += 50;
+            this.setHealth(this.getHealth() + 25);
         }
     }
 
@@ -46,22 +23,9 @@ public class Paladin extends Hero implements Healer, MagicAttack {
             hero.setHealth(hero.getHealth() + 10);
         }
     }
-    @Override
-    public void physicalAttack(Hero hero) {
-        if(hero.getHealth() <= hero.getPhysDef() * this.physAtt) hero.setHealth(MINHEALTH);
-        else{
-            hero.setHealth(hero.getHealth() - hero.getPhysDef() * this.physAtt);
-        }
-    }
-    @Override
-    public void magicalAttack(Hero hero) {
-        if(hero.getHealth() <= hero.getMagicDef() * this.magicAtt) hero.setHealth(MINHEALTH);
-        else {
-            hero.setHealth(hero.getHealth() - hero.getMagicDef() * this.magicAtt);
-        }
-    }
+
     @Override
     public String toString(){
-        return "Paladin{health=" + this.health + "}";
+        return "Paladin{health=" + this.getHealth() + "}";
     }
 }
