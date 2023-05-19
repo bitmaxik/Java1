@@ -16,12 +16,12 @@ public class Warehouse {
         return this.countDeliveredOrders;
     }
 
-    public void setCountDeliveredOrders(int countDeliveredOrders) {
-        this.countDeliveredOrders = countDeliveredOrders;
+    public void deliveredOrdersDone() {
+        this.countDeliveredOrders += 1;
     }
 
-    public void setCountPickedOrders(int countPickedOrders) {
-        this.countPickedOrders = countPickedOrders;
+    public void pickedOrdersDone() {
+        this.countPickedOrders += 1;
     }
 
     public String toString(){

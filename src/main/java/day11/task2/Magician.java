@@ -1,6 +1,6 @@
 package day11.task2;
 
-public class Magician extends Hero implements PhysAttack, MagicAttack {
+public class Magician extends Hero implements MagicAttack {
     private double health;
     private double physDef;
     private double magicDef;
@@ -15,31 +15,36 @@ public class Magician extends Hero implements PhysAttack, MagicAttack {
         this.magicAtt = 20;
     }
     @Override
+    public  double getHealth() {
+        return health;
+    }
+    @Override
     public void setHealth(double health) {
         this.health = health;
     }
-
-    @Override
-    public double getHealth() {
-        return this.health;
-    }
     @Override
     public double getPhysDef() {
-        return this.physDef;
+        return physDef;
     }
     @Override
     public double getMagicDef() {
-        return this.magicDef;
+        return magicDef;
     }
     @Override
     public void physicalAttack(Hero hero) {
-        hero.setHealth(hero.getHealth() - hero.getPhysDef() * this.physAtt);
-        if(hero.getHealth() < MINHEALTH) hero.setHealth(MINHEALTH);
+        if(hero.getHealth() <= hero.getPhysDef() * this.physAtt) hero.setHealth(MINHEALTH);
+        else{
+            hero.setHealth(hero.getHealth() - hero.getPhysDef() * this.physAtt);
+        }
     }
+    @Override
     public void magicalAttack(Hero hero) {
-        hero.setHealth(hero.getHealth() - hero.getMagicDef() * this.magicAtt);
-        if(hero.getHealth() < MINHEALTH) hero.setHealth(MINHEALTH);
+        if(hero.getHealth() <= hero.getMagicDef() * this.magicAtt) hero.setHealth(MINHEALTH);
+        else {
+            hero.setHealth(hero.getHealth() - hero.getMagicDef() * this.magicAtt);
+        }
     }
+    @Override
     public String toString(){
         return "Magician{health=" + this.health + "}";
     }

@@ -7,7 +7,6 @@ public class Task2 {
         Shaman shaman = new Shaman();
         Magician magician = new Magician();
 
-
         warrior.physicalAttack(paladin);
         System.out.println(paladin.toString());
 

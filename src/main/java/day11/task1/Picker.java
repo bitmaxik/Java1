@@ -28,7 +28,7 @@ public class Picker implements Worker {
     @Override
     public void doWork() {
         this.salary += PAYMENT;
-        warehouse.setCountPickedOrders(warehouse.getCountPickedOrders() + 1);
+        warehouse.pickedOrdersDone();
     }
 
     @Override

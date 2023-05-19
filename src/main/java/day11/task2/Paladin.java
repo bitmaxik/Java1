@@ -1,6 +1,6 @@
 package day11.task2;
 
-public class Paladin extends Hero implements Healer, PhysAttack, MagicAttack {
+public class Paladin extends Hero implements Healer, MagicAttack {
     private double health;
     private double physDef;
     private double magicDef;
@@ -14,47 +14,53 @@ public class Paladin extends Hero implements Healer, PhysAttack, MagicAttack {
         this.physAtt = 15;
         this.magicAtt = 0;
     }
-
+    @Override
+    public  double getHealth() {
+        return health;
+    }
     @Override
     public void setHealth(double health) {
         this.health = health;
     }
-
-    @Override
-    public double getHealth() {
-        return this.health;
-    }
     @Override
     public double getPhysDef() {
-        return this.physDef;
+        return physDef;
     }
-
     @Override
     public double getMagicDef() {
-        return this.magicDef;
+        return magicDef;
     }
 
     @Override
     public void healHimself() {
-        this.health += 25;
-        if(this.health > MAXHEALTH) this.health = MAXHEALTH;
+        if((this.health + 50) >= 100) this.health = MAXHEALTH;
+        else{
+            this.health += 50;
+        }
     }
 
     @Override
     public void healTeammate(Hero hero) {
-        hero.setHealth(hero.getHealth() + 10);
-        if(hero.getHealth() > MAXHEALTH) hero.setHealth(MAXHEALTH);
+        if(hero.getHealth() >= hero.getHealth() + 10) hero.setHealth(MAXHEALTH);
+        else{
+            hero.setHealth(hero.getHealth() + 10);
+        }
     }
     @Override
     public void physicalAttack(Hero hero) {
-        hero.setHealth(hero.getHealth() - hero.getPhysDef() * this.physAtt);
-        if(hero.getHealth() < MINHEALTH) hero.setHealth(MINHEALTH);
+        if(hero.getHealth() <= hero.getPhysDef() * this.physAtt) hero.setHealth(MINHEALTH);
+        else{
+            hero.setHealth(hero.getHealth() - hero.getPhysDef() * this.physAtt);
+        }
     }
     @Override
     public void magicalAttack(Hero hero) {
-        hero.setHealth(hero.getHealth() - hero.getMagicDef() * this.magicAtt);
-        if(hero.getHealth() < MINHEALTH) hero.setHealth(MINHEALTH);
+        if(hero.getHealth() <= hero.getMagicDef() * this.magicAtt) hero.setHealth(MINHEALTH);
+        else {
+            hero.setHealth(hero.getHealth() - hero.getMagicDef() * this.magicAtt);
+        }
     }
+    @Override
     public String toString(){
         return "Paladin{health=" + this.health + "}";
     }
