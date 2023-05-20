@@ -2,6 +2,9 @@ package day11.task2;
 
 public class Paladin extends Hero implements Healer {
 
+    public static final double HEALHIMSELFPALADIN = 25;
+    public static final double HEALTEAMMAITPALADIN = 10;
+
     public Paladin(){
         this.setPhysDef(0.5);
         this.setMagicDef(0.8);
@@ -10,17 +13,17 @@ public class Paladin extends Hero implements Healer {
 
     @Override
     public void healHimself() {
-        if((this.getHealth() + 25) >= 100) this.setHealth(MAXHEALTH);
+        if((this.getHealth() + HEALHIMSELFPALADIN) >= MAXHEALTH) this.setHealth(MAXHEALTH);
         else{
-            this.setHealth(this.getHealth() + 25);
+            this.setHealth(this.getHealth() + HEALHIMSELFPALADIN);
         }
     }
 
     @Override
     public void healTeammate(Hero hero) {
-        if(hero.getHealth() >= hero.getHealth() + 10) hero.setHealth(MAXHEALTH);
+        if(hero.getHealth() + HEALTEAMMAITPALADIN >= MAXHEALTH ) hero.setHealth(MAXHEALTH);
         else{
-            hero.setHealth(hero.getHealth() + 10);
+            hero.setHealth(hero.getHealth() + HEALTEAMMAITPALADIN);
         }
     }
 
