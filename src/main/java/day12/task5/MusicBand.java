@@ -28,7 +28,7 @@ public class MusicBand {
 
     public static void transferMembers(MusicBand musicBand1, MusicBand musicBand2){
             musicBand2.getMembers().addAll(musicBand1.members);
-            musicBand1.getMembers().removeAll(musicBand1.members);
+            musicBand1.getMembers().clear();
         }
     public void printMembers(){
         System.out.println(this.getMembers());

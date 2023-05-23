@@ -20,16 +20,10 @@ public class User {
         subscriptions.add(user);
     }
     public boolean isSubscribed(User user){
-        if(subscriptions.contains(user)) return true;
-                    else{
-                return false;
-            }
+       return subscriptions.contains(user);
         }
     public boolean isFriend(User user){
-        if((isSubscribed(user)) && user.isSubscribed(this)) return true;
-        else {
-            return false;
-        }
+        return  isSubscribed(user) && user.isSubscribed(this);
     }
     public void sendMessage(User user, String text){
         MessageDatabase.addNewMessage(this, user,text);
